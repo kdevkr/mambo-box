@@ -1,0 +1,106 @@
+version: '3.8'
+services:
+  zabbix-server:
+    image: zabbix/zabbix-server-pgsql:ubuntu-5.0-latest
+    ports:
+      - 10051:10051
+    volumes:
+      - zabbix_data:/usr/lib/zabbix/
+    environment:
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+      DB_SERVER_HOST: postgres-server
+      DB_SERVER_PORT: 5432
+    links:
+      - postgres-server:postgres-server
+    depends_on:
+      - postgres-server
+    ulimits:
+      nproc: 65535
+    stop_grace_period: 30s
+    networks:
+      back_tier:
+      front_tier:
+
+  zabbix-web:
+    image: zabbix/zabbix-web-nginx-pgsql:ubuntu-5.0-latest
+    ports:
+      - 10052:8080
+    volumes:
+      - zabbix_data:/usr/lib/zabbix/
+    environment:
+      ZBX_SERVER_HOST: zabbix-server
+      ZBX_SERVER_PORT: 10051
+      DB_SERVER_HOST: postgres-server
+      DB_SERVER_PORT: 5432
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      PHP_TZ: Asia/Seoul
+    links:
+      - postgres-server:postgres-server
+      - zabbix-server:zabbix-server
+    depends_on:
+      - postgres-server
+      - zabbix-server
+    restart: always
+    networks:
+      back_tier:
+      front_tier:
+
+  # zabbix_agent:
+  #   image: zabbix/zabbix-agent:ubuntu-5.0-latest
+  #   ports:
+  #     - 10050:10050
+  #   volumes:
+  #     - zabbix_data:/usr/lib/zabbix/
+  #   environment:
+  #     ZBX_SERVER_HOST: zabbix-server
+  #     ZBX_SERVER_PORT: 10051
+  #   links:
+  #     - zabbix-server:zabbix-server
+  #   depends_on:
+  #     - zabbix-server
+  #   restart: always
+  #   privileged: true
+  #   networks:
+  #     back_tier:
+  #       aliases:
+  #         - zabbix-agent
+  #         - zabbix-agent-passive
+
+  postgres-server:
+    image: postgres:alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+    stop_grace_period: 1m
+    networks:
+      back_tier:
+        aliases:
+          - postgres-server
+
+networks:
+  back_tier:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: 'false'
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.239.0/24
+  front_tier:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: 'false'
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
+
+volumes:
+    zabbix_data: {}
+    postgres_data: {}
