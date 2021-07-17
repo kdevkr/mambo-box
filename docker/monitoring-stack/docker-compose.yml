@@ -15,6 +15,8 @@ services:
         - '--web.console.libraries=/usr/share/prometheus/console_libraries'
         - '--web.console.templates=/usr/share/prometheus/consoles'
       restart: always
+      networks: 
+        - monitoring
 
   # alertmanager:
   #   image: prom/alertmanager
@@ -26,6 +28,8 @@ services:
   #   command:
   #     - '--config.file=/etc/alertmanager/config.yml'
   #     - '--storage.path=/alertmanager'
+  #   networks: 
+  #     - monitoring
 
   grafana:
       image: grafana/grafana:7.4.3-ubuntu
@@ -38,10 +42,19 @@ services:
       environment:
         GF_INSTALL_PLUGINS: alexanderzobnin-zabbix-app
       restart: always
+      networks: 
+        - monitoring
 
-# networks:
-#   back_tier:
-#   front_tier:
+  pushgateway:
+      image: prom/pushgateway:latest
+      restart: always
+      ports:
+          - 9091:9091
+      networks: 
+        - monitoring
+
+networks:
+  monitoring:
 
 volumes:
     prometheus_data: {}
