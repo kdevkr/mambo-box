@@ -48,7 +48,7 @@ spec:
     - port: 5432
   selector:
     app: postgres
-  type: NodePort
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment

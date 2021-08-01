@@ -52,7 +52,7 @@ spec:
   selector:
     app: redis
     appCluster: redis-cluster
-  type: NodePort
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -83,7 +83,7 @@ spec:
           ports:
             - containerPort: 6379
           volumeMounts:
-            - mountPath: "/conf/redis.conf"
+            - mountPath: /conf
               name: conf
             - mountPath: /data
               name: data
