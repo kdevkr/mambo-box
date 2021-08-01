@@ -1,0 +1,97 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-config
+  labels:
+    app: redis
+data:
+  redis-conf: |
+    requirepass redis
+    maxmemory-policy allkeys-lru
+    cluster-enabled yes
+    cluster-node-timeout 15000
+    cluster-config-file /data/nodes.conf
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv
+  labels:
+    type: local
+    app: redis
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+  labels:
+    app: redis
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+spec:
+  ports:
+    - port: 6379
+  selector:
+    app: redis
+    appCluster: redis-cluster
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-master
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: redis
+        appCluster: redis-cluster
+    spec:
+      containers:
+        - name: master
+          image: docker.io/redis:6-alpine
+          imagePullPolicy: "IfNotPresent"
+          resources:
+            limits:
+             cpu: "1"
+             memory: "1Gi"
+            requests:
+              cpu: "100m"
+              memory: 100Mi
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - mountPath: "/conf/redis.conf"
+              name: conf
+            - mountPath: /data
+              name: data
+      volumes:
+        - name: conf
+          configMap:
+            name: redis-config
+            defaultMode: 0755
+        - name: data
+          persistentVolumeClaim:
+            claimName: redis-pvc
