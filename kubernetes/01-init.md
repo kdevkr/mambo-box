@@ -19,7 +19,7 @@ sudo kubeadm init --apiserver-advertise-address=$(hostname -I | awk '{print $1}'
 ## Install CNI Plugin
 ```sh
 # flannel
-sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 # canal
-sudo kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
+kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
 ```
