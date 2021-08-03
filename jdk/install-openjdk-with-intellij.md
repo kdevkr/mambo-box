@@ -3,6 +3,6 @@
 
 파일(File) - 프로젝트 구조(Project Structure) - 플랫폼 설정(Platform Settings) - SDKs에서 다운로드
 
-![](./install-openjdk-with-intellij.gif)
+![](./img/install-openjdk-with-intellij.gif)
 
 [AdoptOpenJDK](https://adoptopenjdk.net/), [Amazon Corretto](https://aws.amazon.com/ko/corretto/) 뿐만 아니라 다양한 OpenJDK를 지원한다.

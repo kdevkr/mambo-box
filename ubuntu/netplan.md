@@ -1,6 +1,6 @@
 # Netplan
 
-![](./netplan-01.png)
+![](./img/netplan-01.png)
 
 [Netplan](https://netplan.io/)은우분투 18.04 LTS 부터는 야믈(Yaml) 기반으로 네트워크 인터페이스에 대한 DNS, 라우팅 테이블, 우선순위와 같은 네트워크 설정을 수행하는 [Netplan](https://netplan.io/)을 사용한다.
 
