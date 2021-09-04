@@ -5,3 +5,4 @@
 
 - [Unit test naming best practices](https://stackoverflow.com/questions/155436/unit-test-naming-best-practices)
 - [Unit Test Naming Conventions](https://medium.com/@stefanovskyi/unit-test-naming-conventions-dd9208eadbea)
+- [7 Popular Unit Test Naming Conventions](https://dzone.com/articles/7-popular-unit-test-naming)
