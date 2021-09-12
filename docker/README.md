@@ -89,7 +89,7 @@ Server: Docker Engine - Community
 
 ### 리눅스 배포판
 
-- [리눅스 배포판 도커 엔진 설치](install-on-distro)
+- [리눅스 배포판 도커 엔진 설치](install-on-distro.md)
 
 
 ## 도커 레지스트리
