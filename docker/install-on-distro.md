@@ -26,7 +26,10 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
 ### Amazon Linux 2
-[![Install Docker on Amazon Linux 2](images/install-docker-on-amazon-linux-2.png)](video/install-docker-on-amazon-linux-2.mp4)
+
+<video width="100%" height="300" controls>
+  <source src="video/install-docker-on-amazon-linux-2.mp4" type="video/mp4">
+</video>
 
 ```sh
 # https://gist.github.com/npearce/6f3c7826c7499587f00957fee62f8ee9
