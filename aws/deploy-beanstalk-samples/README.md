@@ -1,7 +1,7 @@
 ## Elastic Beanstalk 배포 따라하기
 
 - [Java SE 플랫폼](java-se-platform/README.md)
-- Go 플랫폼
+- [Go 플랫폼](go-platform/README.md)
 - [Python 플랫폼](python-platform/README.md)
 - [Docker 플랫폼](docker-platform/README.md)
 
