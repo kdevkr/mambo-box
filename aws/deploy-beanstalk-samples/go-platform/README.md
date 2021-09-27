@@ -1,6 +1,8 @@
 ## Go 플랫폼
 Hello World를 출력하는 간단한 Go 웹 애플리케이션을 Go 플랫폼을 통해 배포해보자.
 
+- [샘플 코드](https://github.com/kdevkr/beanstalk-deploy-sample/tree/go)
+
 ### 웹 서버 환경 시작
 웹 애플리케이션을 실행하기 위해 웹 서버 환경을 선택하여 시작한다.
 

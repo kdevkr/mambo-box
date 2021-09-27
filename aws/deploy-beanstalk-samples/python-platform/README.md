@@ -1,6 +1,8 @@
 ## Python 플랫폼
 Hello World를 출력하는 간단한 Python 웹 애플리케이션을 배포해보자.
 
+- [샘플 코드](https://github.com/kdevkr/beanstalk-deploy-sample/tree/python)
+
 ### 플랫폼 시작하기
 웹 서버 환경과 함께 Python 플랫폼을 선택하고 추가 옵션을 구성한다.
 
