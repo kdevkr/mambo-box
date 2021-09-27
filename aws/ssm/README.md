@@ -1,7 +1,12 @@
-> New – Port Forwarding Using AWS System Manager Session Manager
-> https://aws.amazon.com/ko/blogs/aws/new-port-forwarding-using-aws-system-manager-sessions-manager/
+## 시스템 매니저
 
-## 프라이빗 EC2 인스턴스 포트 포워딩
+### 시스템 세션 매니저 타임아웃 설정
+
+![](img/aws-system-session-manager-idle-timeout.png)
+
+기본 20분으로 설정되어있는 유휴 상태에 대한 타임아웃을 최대 1시간까지 늘릴 수 있다.
+
+### 프라이빗 EC2 인스턴스 포트 포워딩
 외부 인터넷망에서 연결할 수 없는 프라이빗 서브넷에 위치하는 EC2 인스턴스에 연결하기 위해서는 퍼블릭 IP이 할당된 Bastion 호스트 인스턴스를 통해 접근해야한다. 이 과정에서 Bastion 호스트 인스턴스를 유지하는 비용과 함께 SSH 접근을 위한 pem 인증서 파일에 대한 관리가 필요한 단점이 발생한다. AWS에서 제공하는 System Session Manager라고 하는 SSM 서비스를 이용하면 Bastion 호스트와 pem 인증서 없이도 프라이빗 EC2 인스턴스에 접근할 수 있는 방법을 제공한다.
 
 ![](https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2019/08/20/archi-cropped-1.png)
@@ -11,7 +16,7 @@
 - SSM Agent 2.3.672.0
 - AmazonSSMManagedInstanceCore IAM Role
 
-### AWS CLI
+#### with AWS CLI
 [AWS CLI](https://aws.amazon.com/ko/cli/)를 통해 프라이빗 EC2 인스턴스에 연결할 수 있도록 Session Manager Plugin을 [설치](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)해야한다.
 
 - [on Windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#install-plugin-windows)

@@ -1,4 +1,27 @@
-# AWS CLI Profiles
+## AWS CLI
+
+### 설치
+AWS CLI Version 2 설치를 권장한다.
+
+- [AWS CLI v2 Documentation](https://github.com/aws/aws-cli/tree/v2#installation)
+- [Installing, updating, and uninstalling the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+
+```ps
+PS C:\Users\Mambo> aws --version
+aws-cli/2.2.30 Python/3.8.8 Windows/10 exe/AMD64 prompt/off
+```
+
+```sh
+sudo apt-get install curl unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+&& unzip awscliv2.zip \
+&& sudo ./aws/install
+
+aws --version
+aws-cli/2.2.41 Python/3.8.8 Linux/5.4.0-84-generic exe/x86_64.ubuntu.20 prompt/off
+```
+
+### AWS CLI Profiles
 
 AWS CLI에서 사용되는 자격 증명에 대해서 명명된 프로파일로 저장하고 AWS CLI를 사용할 때 프로파일을 지정하거나 환경변수 AWS_PROFILE에 프로파일을 지정하자.
 
