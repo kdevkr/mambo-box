@@ -1,0 +1,13 @@
+/var/current/app/*.log {
+    daily
+    rotate 30
+    size 1M
+    missingok
+    notifempty
+    compress
+    dateext
+    create
+    copytruncate
+    nomail
+    olddir /var/current/app/rotate
+}
