@@ -1,0 +1,57 @@
+// https://docs.gradle.org/current/userguide/jacoco_plugin.html
+
+plugins {
+    id 'jacoco'
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+// JaCoCo Report configuration
+jacocoTestReport {
+    dependsOn test
+    reports {
+        html.enabled false
+        xml.enabled true
+    }
+//    finalizedBy 'jacocoTestCoverageVerification'
+}
+
+// Configuring the JaCoCo Plugin
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.50
+            }
+        }
+
+        rule {
+            enabled = true
+            element = 'CLASS'
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.80
+            }
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.80
+            }
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 300
+            }
+            excludes = []
+        }
+    }
+}
+
