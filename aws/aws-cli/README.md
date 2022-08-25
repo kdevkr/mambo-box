@@ -42,3 +42,15 @@ secret_key     ****************QHrA shared-credentials-file
 
 export AWS_PROFILE=mambo
 ```
+
+### AWS CLI Examples
+
+#### EC2 인스턴스 정보 조회하기
+```sh
+aws ec2 describe-instances --query "Reservations[].Instances[].{Name: Tags[?Key == 'Name'].Value | [0], Id: InstanceId, State: State.Name, Type: InstanceType}" --output table --profile mambo
+```
+
+#### S3 버킷 목록 조회하기
+```sh
+aws s3 ls s3:// --profile mambo
+```
