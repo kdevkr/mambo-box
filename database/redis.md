@@ -22,3 +22,8 @@ redis-cli 6.0.16
 - [개발자를 위한 레디스 튜토리얼 01](https://meetup.toast.com/posts/224)
 - [ElastiCache for Redis 사용 시 지연 시간이 긴 문제를 해결하려면 어떻게 해야 합니까?](https://aws.amazon.com/ko/premiumsupport/knowledge-center/elasticache-redis-correct-high-latency/)
 
+
+#### 대체제
+
+- [Dragonfly - A Modern Redis Replacement](https://dragonflydb.io/)
+- [KeyDB - A Multithreaded Fork of Redis](https://docs.keydb.dev/)
