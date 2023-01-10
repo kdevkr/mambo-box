@@ -1,0 +1,97 @@
+name: PR Checks
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.java'
+      - '**.js'
+      - '**.vue'
+jobs:
+  checks:
+    name: Checks
+    runs-on: ubuntu-latest # ubuntu-22.04
+
+    strategy:
+      matrix:
+        java: [11]
+        node: [12]
+
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            java:
+              - '**.java'
+            vuejs:
+              - '**.vue'
+              - '**.js'
+
+      - uses: actions/checkout@v2
+
+      ###########################################
+      ## Java Checkstyle
+      ###########################################
+      - if: steps.changes.outputs.java == 'true'
+        name: Set up JDK ${{ matrix.Java }}
+        uses: actions/setup-java@v3
+        with:
+          distribution: corretto
+          java-version: ${{ matrix.java }}
+          cache: 'gradle'
+#      - name: Cache Dependencies
+#        id: gradle-cache
+#        uses: actions/cache@v3
+#        with:
+#          path: |
+#            ~/.gradle/caches
+#            ~/.gradle/wrapper
+#          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+#          restore-keys: |
+#            ${{ runner.os }}-gradle-
+#      - name: Grant execute permission for gradlew
+#        run: chmod +x gradlew
+#      - name: Build with Gradle
+#        if: steps.gradle-cache.outputs.cache-hit != 'true'
+#        run: ./gradlew :build -x test
+      - if: steps.changes.outputs.java == 'true'
+        name: Run checkstyle
+        uses: nikitasavinov/checkstyle-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          tool_name: 'checkstyle'
+          checkstyle_version: 10.3
+          checkstyle_config: checkstyle.xml
+
+      ###########################################
+      ## Node ESLint
+      ###########################################
+      - if: steps.changes.outputs.vuejs == 'true'
+        name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+          cache-dependency-path: npm-shrinkwrap.json
+      - if: steps.changes.outputs.vuejs == 'true'
+        name: Cache Dependencies
+        id: npm-cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/npm-shrinkwrap.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - if: steps.changes.outputs.vuejs == 'true' && steps.npm-cache.outputs.cache-hit != 'true'
+        name: Install Dependencies
+        run: npm ci
+      - if: steps.changes.outputs.vuejs == 'true'
+        name: Run eslint
+        uses: reviewdog/action-eslint@v1
+        with:
+          reporter: github-pr-check
+          eslint_flags: '--ext .js,.vue ./src/main/resources/static/js'
