@@ -1,0 +1,10 @@
+version: "3"
+services:
+  app:
+    image: eclipse-temurin:17-jre-alpine
+    ports:
+      - "8080:8080"
+    command: java -jar -Xmx500m /demo.war
+    tty: true
+    volumes:
+      - ./demo.war:/demo.war
