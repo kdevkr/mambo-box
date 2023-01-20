@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  dragonfly:
+    image: 'docker.dragonflydb.io/dragonflydb/dragonfly'
+    command:
+      - "--save_schedule=*:30" # save for every 30 minute
+      - "--dir=/data"
+      - "--dbfilename=dump.rdb"
+      - "--requirepass=redispass"
+      - "--maxmemory=1gb"
+    ulimits:
+      memlock: -1
+    ports:
+      - "6379:6379"
+    # For better performance, consider `host` mode instead `port` to avoid docker NAT.
+    # `host` mode is NOT currently supported in Swarm Mode.
+    # https://docs.docker.com/compose/compose-file/compose-file-v3/#network_mode
+    # network_mode: "host"
+    volumes:
+      - dragonflydata:/data
+    restart: unless-stopped
+
+volumes:
+  dragonflydata:
