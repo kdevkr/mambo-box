@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  app:
+    image: tomcat:9.0-jre11-temurin-focal
+    ports:
+      - 8080:8080
+    volumes:
+      - ../demo.war:/usr/local/tomcat/webapps/demo.war
+      - ./conf/server.xml:/usr/local/tomcat/conf/server.xml
