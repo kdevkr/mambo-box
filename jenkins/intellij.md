@@ -12,3 +12,6 @@
 ![003](https://user-images.githubusercontent.com/17937604/219660398-b631a848-115f-44f5-a209-969737bb5252.png)
 
 젠킨스 사용자에 대한 비밀번호가 아닌 API 토큰을 발급하고나서 연결 테스트를 수행할 수 있다.
+
+## 참고 링크 
+- https://github.com/MCMicS/jenkins-control-plugin/issues/123#issuecomment-643127166
