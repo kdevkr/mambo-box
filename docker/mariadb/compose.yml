@@ -1,0 +1,14 @@
+version: "3"
+services:
+  db:
+    image: mariadb:11-jammy
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./conf/utf8.cnf:/etc/mysql/conf.d/utf8.cnf:ro
+      - ./sql/create_user.sql:/docker-entrypoint-initdb.d/01_create_user.sql
+    environment:
+      MARIADB_ROOT_USERNAME: root
+      MARIADB_ROOT_PASSWORD: zXRVp839UQCJ
+      MARIADB_DATABASE: sample
+    restart: on-failure
