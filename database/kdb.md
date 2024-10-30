@@ -22,6 +22,25 @@ taskset -c 0,1 q -p 5000 -s 8
 exit 0
 ```
 
+## Iterators
+> https://code.kx.com/q/wp/iterators/
+
+```q
+/ Each
+/ {select from trade where date = x} each dates;
+{select from trade where date = x}'[dates];
+
+/ Each Parallel
+/ {select from trade where date = x} peach dates;
+{select from trade where date = x}':[dates];
+
+/ Each joins
+rdb:4!trade from realtime;
+hdb:4!trade from historical;
+cdb:0#rdb;
+cdb,:hdb,rdb;
+```
+
 ## References
 
 - [kdb+tick](https://github.com/KxSystems/kdb-tick)
