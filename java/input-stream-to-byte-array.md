@@ -3,7 +3,7 @@
 ```java
 @RequestMapping(value = "/file", method = {RequestMethod.POST, RequestMethod.PUT})
 public ResponseEntity<byte[]> upload(@RequestPart("file") MultipartFile file) throws IOException {
-    file.getBytes(); // InputStream.getBytes since JDK 9+
+    file.getBytes(); // InputStream::readAllBytes since JDK 9+
     
     org.springframework.util.StreamUtils.copyToByteArray(file.getInputStream());
     org.apache.commons.io.IOUtils.toByteArray(file.getInputStream());
