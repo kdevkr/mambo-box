@@ -29,6 +29,13 @@ public enum TZ {
 }
 ```
 
+```java
+List<TZ> tzList = List.of(TZ.values());
+EnumSet<TZ> tzSet = EnumSet.allOf(TZ.class);
+EnumMap<TZ, TZ> tzMap = new EnumMap<>(TZ.class);
+tzMap.putAll(EnumUtils.getEnumMap(TZ.class, tz -> tz)); // Apache Commons Lang
+```
+
 - [A Guide to Java Enums](https://www.baeldung.com/a-guide-to-java-enums)
 - [Attaching Values to Java Enum](https://www.baeldung.com/java-enum-values)
 - [Enum Mapping in Spring Boot](https://www.baeldung.com/spring-boot-enum-mapping)
