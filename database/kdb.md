@@ -4,8 +4,9 @@
 - 인메모리 컴퓨팅 엔진 및 실시간 스트리밍 처리
 
 ## Install
+- [kdb+ 4.0 버전 다운로드](https://portal.dl.kx.com/assets/raw/kdb%2B/4.0) 가능, 4.1 버전부터는 이메일 인증 필요
 - https://code.kx.com/q/learn/install
-- 라이센스 관련 k4.lic 또는 kc.lic 파일을 요구
+- 라이센스 관련 k4.lic 또는 kc.lic 파일 필요
 
 ## Run as
 ```sh
