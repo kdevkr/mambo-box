@@ -24,7 +24,7 @@ fun main(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in
 }
 ```
 
-## Cheetsheet
+## Cheatsheet
 - [Kotlin Cheat Sheet](https://blog.kotlin-academy.com/kotlin-cheat-sheet-1137588c75a)
 - [Kotlin Cheat sheet](https://alidehkhodaei.github.io/kotlin-cheat-sheet/)
 - [Kotlin cheatsheet](https://devhints.io/kotlin)
