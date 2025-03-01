@@ -21,3 +21,18 @@ aws iot describe-endpoint --endpoint-type iot:Data-ATS
 - `Data-ATS`는 [ATS(Amazon Trust Services CA)](https://www.amazontrust.com/repository/)로 검증되는 디바이스 엔드포인트
 - X.509 인증서와 MQTT 프로토콜을 활용하는 디바이스는 Data-ATS 엔드포인트를 사용 ([디바이스 통신 프로토콜](https://docs.aws.amazon.com/ko_kr/iot/latest/developerguide/protocols.html))
 - MQTT Weboscket을 활용하는 디바이스는 X.509 인증서가 아닌 `SigV4` 서명으로 인증
+
+#### 클라이언트 인증을 위한 자격 증명 보안 주체
+- X.509 클라이언트 인증서
+- IAM 사용자 역할
+- Amazon Cognito 자격 증명
+
+#### Amazon IoT 클라이언트 인증서 생성
+
+```sh
+aws iot create-keys-and-certificate --no-set-as-active
+```
+
+- 2024 비트 길이의 RSA 키 페어
+- X.509 인증서
+- [Amazon Root CA 인증서](https://docs.aws.amazon.com/ko_kr/iot/latest/developerguide/server-authentication.html#server-authentication-certs) - Amazon Root CA 1
