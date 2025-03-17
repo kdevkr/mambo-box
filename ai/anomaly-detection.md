@@ -28,12 +28,14 @@ Novelty, Anomaly, Outlier 는 정상적인 범주를 벗어난 **이상치** 데
 - One-Class SVM(Support Vector Machine)
 - Deep SVDD(Support Vector Data Description)
 - LOF(Local Outlier Factor)
-- Mahalanobis Distance
+- [Mahalanobis Distance](https://medium.com/@ikaya754/anomaly-detection-and-mahalanobis-distance-25b21b7cfe5b)
+- KNN(K-Nearest Neighbors)
 - GAN(Generative Adversarial Network)
-- PCA(Principal Component Analysis)
+- [PCA(Principal Component Analysis)](https://medium.com/data-science/a-simple-example-using-pca-for-outlier-detection-ab2773b98e4a)
 
 ## References
 
 - [Anomaly Detection Learning Resources](https://github.com/yzhao062/anomaly-detection-resources)
 - [scikit-learn: machine learning in Python](https://github.com/scikit-learn/scikit-learn)
 - https://github.com/openvinotoolkit/anomalib
+- [Statsmodels: statistical modeling and econometrics in Python](https://github.com/statsmodels/statsmodels/)
