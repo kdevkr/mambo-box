@@ -54,7 +54,7 @@ zoneinfo._common.ZoneInfoNotFoundError: 'No time zone found with key KST'
 2025-04-10T02:15:25.495Z [time] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
 ```
 
-시스템 타임존을 자동으로 적용하는데 문제가 있으므로 `--local-timezone`을 명시해야함
+자동으로 반영되는 [시스템 타임존 표기법으로 인한 문제](https://github.com/modelcontextprotocol/servers/issues/786)가 있으므로 `--local-timezone`을 명시해야함
 
 ```json
 "mcpServers": {
