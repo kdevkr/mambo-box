@@ -23,10 +23,29 @@ skill-name/
 - Antigravity → `~/.gemini/antigravity/skills/{skillFolder}/SKILL.md` or `{projectFolder}/.agents/skills/{skillFolder}/SKILL.md`
 - Claude Code → `.claude/skills/{skillFolder}/SKILL.md`
 
+## Marketplace
+
+- [skills.sh](https://skills.sh/)
+- https://www.antigravityskills.org/
+- https://awesome-copilot.github.com/skills/
+- [heilcheng/awesome-agent-skill](https://github.com/heilcheng/awesome-agent-skill)
+
+```sh
+npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines
+npx skills add https://github.com/github/awesome-copilot --skill web-design-reviewer
+npx skills add https://github.com/anthropics/skills --skill frontend-design
+
+npx skills add https://github.com/github/awesome-copilot --skill java-springboot
+npx skills add https://github.com/github/awesome-copilot --skill java-junit
+npx skills add https://github.com/github/awesome-copilot --skill java-docs
+npx skills add https://github.com/wshobson/agents --skill postgresql-table-design
+npx skills add https://github.com/github/awesome-copilot --skill postgresql-optimization
+npx skills add https://github.com/github/awesome-copilot --skill postgresql-code-review
+npx skills add https://github.com/supercent-io/skills-template --skill security-best-practices
+```
+
 ## Reference
 
 - [Open agent skills standard](https://agentskills.io/home)
 - [Claude를 skills로 확장하기](https://code.claude.com/docs/ko/skills)
 - [Google Antigravity - Agent Skills](https://antigravity.google/docs/skills)
-- [heilcheng/awesome-agent-skill](https://github.com/heilcheng/awesome-agent-skill)
-- [skills.sh](https://skills.sh/)
