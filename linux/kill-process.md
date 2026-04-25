@@ -12,7 +12,7 @@ lsof -t -i:$PORT | xargs -r kill -15
 
 ```sh
 PORT=8080
-lsof -t -i:$PORT | xargs -r kill -15
+pgrep -f "p $PORT" | xargs -r kill -15
 ```
 
 ## ss
