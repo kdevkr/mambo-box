@@ -13,4 +13,11 @@ github.com
 
 ❯ gh auth switch -u mambo-EIP                                                                  
 ✓ Switched active account for github.com to mambo-EIP
+
+❯ git pull                                                                 
+remote: Repository not found.                                              
+fatal: repository 'https://github.com/I-ON/$repo.git/' not found
+❯ gh auth setup-git                                                        
+❯ git pull                                                                 
+Already up to date.
 ```
