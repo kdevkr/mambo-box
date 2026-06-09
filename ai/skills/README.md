@@ -27,21 +27,30 @@ skill-name/
 
 - [skills.sh](https://skills.sh/)
 - https://www.antigravityskills.org/
-- https://awesome-copilot.github.com/skills/
-- [heilcheng/awesome-agent-skill](https://github.com/heilcheng/awesome-agent-skill)
+- https://ecc.tools/skills/
 
 ```sh
 npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines
 npx skills add https://github.com/github/awesome-copilot --skill web-design-reviewer
 npx skills add https://github.com/anthropics/skills --skill frontend-design
 
+npx skills add https://github.com/affaan-m/everything-claude-code --skill java-coding-standards
+npx skills add https://github.com/affaan-m/everything-claude-code --skill api-design
+npx skills add https://github.com/affaan-m/everything-claude-code --skill springboot-patterns
 npx skills add https://github.com/github/awesome-copilot --skill java-springboot
 npx skills add https://github.com/github/awesome-copilot --skill java-junit
 npx skills add https://github.com/github/awesome-copilot --skill java-docs
 npx skills add https://github.com/wshobson/agents --skill postgresql-table-design
 npx skills add https://github.com/github/awesome-copilot --skill postgresql-optimization
 npx skills add https://github.com/github/awesome-copilot --skill postgresql-code-review
+
+npx skills add https://github.com/affaan-m/everything-claude-code --skill security-review
 npx skills add https://github.com/supercent-io/skills-template --skill security-best-practices
+npx skills add https://github.com/microsoft/playwright-cli --skill playwright-cli
+
+npx skills add https://github.com/github/awesome-copilot --skill git-commit
+npx skills add https://github.com/github/awesome-copilot --skill gh-cli
+npx skills add https://github.com/github/awesome-copilot --skill refactor
 ```
 
 ## Reference
