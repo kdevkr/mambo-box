@@ -10,4 +10,9 @@ npx skills add https://github.com/addyosmani/agent-skills --skill code-review-an
 # Required CLI
 npx skills add https://github.com/coderabbitai/skills --skill code-review
 npx skills add https://github.com/alibaba/open-code-review --skill open-code-review
+
+# Design
+npx skills add https://github.com/pbakaus/impeccable --skill impeccable
+npx skills add https://github.com/emilkowalski/skills --skill emil-design-eng
+npx skills add https://github.com/emilkowalski/skills --skill review-animations
 ```
