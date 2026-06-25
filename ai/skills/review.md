@@ -16,3 +16,10 @@ npx skills add https://github.com/pbakaus/impeccable --skill impeccable
 npx skills add https://github.com/emilkowalski/skills --skill emil-design-eng
 npx skills add https://github.com/emilkowalski/skills --skill review-animations
 ```
+
+## Claude Code
+
+https://code.claude.com/docs/en/skills#bundled-skills
+
+- /code-review
+- /security-review
