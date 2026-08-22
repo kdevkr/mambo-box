@@ -45,3 +45,21 @@ sudo chmod +x /usr/local/bin/docker-composee
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
+
+### Amazon Linux 2023
+
+`sh
+# Install Docker Engine
+sudo yum install -y docker
+sudo usermod -aG docker ec2-user
+sudo systemctl enable --now docker
+exec bash
+
+# Install Docker Compose CLI Plugin
+sudo mkdir -p /usr/local/lib/docker/cli-plugins/
+sudo curl -SL "https://github.com/docker/compose/releases/latest/download/docker-compose-linux-$(uname -m)" -o /usr/local/lib/docker/cli-plugins/docker-compose
+sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+
+# docker-compose 명령어 호환 alias (선택)
+alias docker-compose='docker compose --compatibility "$@"'
+`

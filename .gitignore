@@ -1,3 +1,4 @@
 *.jar
 *.crt
 *.key
+.gradle/
